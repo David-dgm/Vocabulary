@@ -1,4 +1,4 @@
 export * from './MemoryCardsRoutes';
-export * from './PrivateRoute';
+export * from './PrivateRoutes';
 export * from './PublicRoutes';
 
