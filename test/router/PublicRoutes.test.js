@@ -1,14 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { AuthContext } from '../../../auth';
+import { AuthContext } from '../../src/auth';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { PublicRoutes } from '../../../cards/routes/PublicRoutes';
+import { PublicRoutes } from '../../src/router/PublicRoutes';
 
 describe('PublicRoutes-Test', () => {
 	test('should show children component if is not logged', () => {
 		const contextValue = {
 			logged: false,
 		};
-
 		render(
 			<AuthContext.Provider value={contextValue}>
 				<PublicRoutes>
@@ -16,10 +15,8 @@ describe('PublicRoutes-Test', () => {
 				</PublicRoutes>
 			</AuthContext.Provider>
 		);
-
 		expect(screen.getByText('Children')).toBeTruthy();
 	});
-
 	test('should navigate if is logged', () => {
 		const contextValue = {
 			logged: true,
@@ -28,7 +25,6 @@ describe('PublicRoutes-Test', () => {
 				id: '123',
 			},
 		};
-
 		render(
 			<AuthContext.Provider value={contextValue}>
 				<MemoryRouter initialEntries={['/login']}>
@@ -41,12 +37,11 @@ describe('PublicRoutes-Test', () => {
 								</PublicRoutes>
 							}
 						/>
-						<Route path='search' element={<h1>Diccionario</h1>} />
+						<Route path='/search' element={<h1>Diccionario</h1>} />
 					</Routes>
 				</MemoryRouter>
 			</AuthContext.Provider>
 		);
-
 		expect(screen.getByText('Diccionario')).toBeTruthy();
 	});
 });

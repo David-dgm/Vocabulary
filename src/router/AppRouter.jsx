@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import { LoginPage } from '../auth';
 import { MemoryCardsRoutes } from '../cards';
-import { PrivateRoute } from '../cards/routes/PrivateRoute';
-import { PublicRoutes } from '../cards/routes/PublicRoutes';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoutes } from './PublicRoutes';
 
 export const AppRouter = () => {
 	// <Route path='/*' element={<MemoryCardsRoutes />} />

@@ -1,4 +1,4 @@
-import { authReducer, types } from '../../../auth';
+import { authReducer, types } from '../../../src/auth';
 
 describe('AuthReducer-Test', () => {
 	const userExpected = { id: 'ABC', name: 'david' };
