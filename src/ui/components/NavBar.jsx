@@ -19,7 +19,7 @@ export const Navbar = () => {
 	return (
 		<nav className='navbar navbar-expand-sm navbar-dark bg-dark p-2'>
 			<Link className='navbar-brand' to='/'>
-				Grupos de Vocabulario
+				Vocabulario
 			</Link>
 
 			<div className='navbar-collapse'>
@@ -32,11 +32,11 @@ export const Navbar = () => {
 						Mobiliario
 					</NavLink>
 					<NavLink className={getClassNameWhenIsActive} to='/search'>
-						Dictionary
+						Diccionario
 					</NavLink>
 
 					<NavLink className={getClassNameWhenIsActive} to='/memo-card'>
-						Memory Card
+						Palabra
 					</NavLink>
 				</div>
 			</div>
