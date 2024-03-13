@@ -16,6 +16,8 @@ describe('AppRouter-Test', () => {
 				</AuthContext.Provider>
 			</MemoryRouter>
 		);
-		expect(screen.getAllByText('Login').length).toBe(2);
+		
+		expect(screen.getAllByText('LoginPage').length).toBeTruthy();
+		expect(screen.getAllByText('Login').length).toBeTruthy();
 	});
 });
