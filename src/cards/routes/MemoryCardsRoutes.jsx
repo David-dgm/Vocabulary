@@ -8,13 +8,13 @@ export const MemoryCardsRoutes = () => {
 			<Navbar />
 			<div className='container'>
 				<Routes>
-					<Route path='adjetivos' element={<AdjectivePage />} />
-					<Route path='mobiliario' element={<FurniturePage />} />
+					<Route path='adjective' element={<AdjectivePage />} />
+					<Route path='furniture' element={<FurniturePage />} />
 
 					<Route path='search' element={<SearchPage />} />
-					<Route path='memo-card/:wordId' element={<MemoCardPage />} />
+					<Route path='word-card/:wordId' element={<MemoCardPage />} />
 
-					<Route path='/' element={<Navigate to='/adjetivos' />} />
+					<Route path='/' element={<Navigate to='/search' />} />
 				</Routes>
 			</div>
 		</>

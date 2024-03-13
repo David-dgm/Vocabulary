@@ -24,7 +24,7 @@ export const WordCard = ({ id, word, context, use_case, first_appearance, other_
 								<small className='text-muted'>{first_appearance}</small>
 							</p>
 
-							<Link to={`/memo-card/${id}`}>Más ...</Link>
+							<Link to={`/word-card/${id}`}>Más ...</Link>
 						</div>
 					</div>
 				</div>

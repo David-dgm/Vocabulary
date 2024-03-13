@@ -24,18 +24,18 @@ export const Navbar = () => {
 
 			<div className='navbar-collapse'>
 				<div className='navbar-nav'>
-					<NavLink className={getClassNameWhenIsActive} to='/adjetivos'>
+					<NavLink className={getClassNameWhenIsActive} to='/adjective'>
 						Adjetivos
 					</NavLink>
 
-					<NavLink className={getClassNameWhenIsActive} to='/mobiliario'>
+					<NavLink className={getClassNameWhenIsActive} to='/furniture'>
 						Mobiliario
 					</NavLink>
 					<NavLink className={getClassNameWhenIsActive} to='/search'>
 						Diccionario
 					</NavLink>
 
-					<NavLink className={getClassNameWhenIsActive} to='/memo-card'>
+					<NavLink className={getClassNameWhenIsActive} to='/word-card'>
 						Palabra
 					</NavLink>
 				</div>
