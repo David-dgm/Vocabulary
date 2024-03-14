@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { AuthContext } from '../../src/auth';
 import { AppRouter } from '../../src/router/AppRouter';
 
@@ -10,14 +10,29 @@ describe('AppRouter-Test', () => {
 		};
 
 		render(
-			<MemoryRouter initialEntries={['/adjetivo']}>
+			<MemoryRouter initialEntries={['/adjective']}>
 				<AuthContext.Provider value={initialStatus}>
 					<AppRouter />
 				</AuthContext.Provider>
 			</MemoryRouter>
 		);
-		
-		expect(screen.getAllByText('LoginPage').length).toBeTruthy();
-		expect(screen.getAllByText('Login').length).toBeTruthy();
+
+		expect(screen.getAllByText('LoginPage')).toBeTruthy();
+		expect(screen.getAllByText('Login')).toBeTruthy();
+	});
+	test('should show children if is logged', () => {
+		const initialStatus = {
+			logged: true,
+		};
+
+		render(
+			<MemoryRouter initialEntries={['/login']}>
+				<AuthContext.Provider value={initialStatus}>
+					<AppRouter />
+				</AuthContext.Provider>
+			</MemoryRouter>
+		);
+
+		expect(screen.getAllByText('Diccionario').length).toBeGreaterThanOrEqual(1);
 	});
 });
