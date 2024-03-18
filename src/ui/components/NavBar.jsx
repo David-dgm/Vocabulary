@@ -11,8 +11,8 @@ export const Navbar = () => {
 
 	const onLogout = () => {
 		logout();
-		navigate('/login', {
-			replace: true
+		navigate('/auth/login', {
+			replace: true,
 		});
 	};
 
