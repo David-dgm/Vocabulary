@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import { useForm } from '../../hooks/useForm';
 import { WordCard } from '../components';
 import { getWordsByName } from '../helpers';
+import { Typography } from '@mui/material';
 
 export const SearchPage = () => {
 	const navigate = useNavigate();
@@ -12,11 +13,11 @@ export const SearchPage = () => {
 
 	const words = getWordsByName(q);
 
-	const showSearch = (q.length===0);
-	const showError = (q.length > 0 && words.length ===0);
+	const showSearch = q.length === 0;
+	const showError = q.length > 0 && words.length === 0;
 
 	const { searchText, onInputChange } = useForm({
-		searchText: q
+		searchText: q,
 	});
 
 	const onSearchSubmit = (event) => {
@@ -30,7 +31,8 @@ export const SearchPage = () => {
 
 	return (
 		<>
-			<h1>Dictionary</h1>
+			<Typography variant='h1'>Dictionary</Typography>
+
 			<hr />
 			<div className='row'>
 				<div className='col-5'>
