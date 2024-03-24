@@ -19,7 +19,9 @@ export const vocabularySlice = createSlice({
 		setActiveWord: (state, action) => {
 			state.active = action.payload;
 		},
-		setWords: (state, action) => {},
+		setWords: (state, action) => {
+			state.words = action.payload;
+		},
 		setSaving: (state) => {},
 		updateWord: (state, action) => {},
 		deleteWordById: (state, action) => {},
