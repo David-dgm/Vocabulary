@@ -2,15 +2,29 @@ import { IconButton } from '@mui/material';
 import { AddOutlined } from '@mui/icons-material';
 import { CardView, NothingSelectedView } from '../views';
 import { VocabularyLayout } from '../layout/VocabularyLayout';
+import { useDispatch, useSelector } from 'react-redux';
+import { startNewWord } from '../../store/vocabulary/thunks';
 
 export const VocabularyPage = () => {
+	const { isSaving, active: activeWord } = useSelector((state) => state.vocabulary);
+
+	const dispatch = useDispatch();
+
+	const onClickNewWord = () => {
+		dispatch(startNewWord());
+	};
+
 	return (
 		<VocabularyLayout>
+			{!!activeWord ? <CardView /> : <NothingSelectedView />}
+
 			{/* <CardView /> */}
-			<NothingSelectedView />
+			{/* <NothingSelectedView /> */}
 			{/* <Typography variant='h1'>Vocabulary Page</Typography> */}
 
 			<IconButton
+				disabled={isSaving}
+				onClick={onClickNewWord}
 				size='large'
 				sx={{
 					color: 'white',
