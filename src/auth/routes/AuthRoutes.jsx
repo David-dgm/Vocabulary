@@ -2,6 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { LoginPage, RegisterPage } from '../pages';
 
 export const AuthRoutes = () => {
+	console.log('No atenticado');
+
 	return (
 		<Routes>
 			<Route path='login' element={<LoginPage />} />

@@ -1,19 +1,15 @@
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../auth/context/AuthContext';
+import { useDispatch } from 'react-redux';
 
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
+import { startLogout } from '../../store/auth';
 
 export const VNavBar = ({ drawerWidth = 240 }) => {
-	const { user, logout } = useContext(AuthContext);
-	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const onLogout = () => {
-		logout();
-		navigate('/auth/login', {
-			replace: true,
-		});
+		console.log('Logout');
+		dispatch(startLogout());
 	};
 
 	return (

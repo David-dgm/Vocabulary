@@ -1,26 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Link as RouterLink } from 'react-router-dom';
+
 import { AuthLayout } from '../layout/AuthLayout';
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useForm } from '../../hooks';
 import { startGoogleSignIn, startLoginWithEmailPaswword } from '../../store/auth';
 
 export const LoginPage = () => {
-	const { login } = useContext(AuthContext);
-
-	const navigate = useNavigate();
-
-	const onLogin = () => {
-		const lastPath = localStorage.getItem('last-path') || '/';
-
-		login('David Gomez');
-		navigate(lastPath, {
-			replace: true,
-		});
-	};
 	// Nueva version
 	const { status, errorMessage } = useSelector((state) => state.auth);
 
@@ -94,10 +82,10 @@ export const LoginPage = () => {
 					</Grid>
 				</Grid>
 			</form>
-			<hr />
+			{/* <hr />
 			<button className='btn btn-primary' onClick={onLogin}>
 				Login
-			</button>
+			</button> */}
 		</AuthLayout>
 	);
 };
