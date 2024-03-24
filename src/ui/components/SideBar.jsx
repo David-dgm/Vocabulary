@@ -1,21 +1,10 @@
-import { TurnedInNot } from '@mui/icons-material';
-import {
-	Box,
-	Divider,
-	Drawer,
-	Grid,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	Toolbar,
-	Typography,
-} from '@mui/material';
 import { useSelector } from 'react-redux';
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material';
+import { SideBarItem } from './SideBarItem';
 
 export const SideBar = ({ drawerWidth = 240 }) => {
 	const { displayName } = useSelector((state) => state.auth);
+	const { words } = useSelector((state) => state.vocabulary);
 
 	return (
 		<Box component='nav' sx={{ width: { sm: drawerWidth, flexShrink: { sm: 0 } } }}>
@@ -34,18 +23,8 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 				</Toolbar>
 				<Divider />
 				<List>
-					{['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'].map((text) => (
-						<ListItem key={text} disablePadding>
-							<ListItemButton>
-								<ListItemIcon>
-									<TurnedInNot />
-								</ListItemIcon>
-								<Grid container>
-									<ListItemText primary={text} />
-									<ListItemText secondary={'Lore lore!, Maku maku!'} />
-								</Grid>
-							</ListItemButton>
-						</ListItem>
+					{words.map((word) => (
+						<SideBarItem key={word.value} {...word} />
 					))}
 				</List>
 			</Drawer>
