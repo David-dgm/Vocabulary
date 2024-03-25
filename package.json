@@ -16,12 +16,14 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "@reduxjs/toolkit": "^2.2.2",
+    "dotenv": "^16.4.5",
     "firebase": "^10.9.0",
     "query-string": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "6",
+    "sweetalert2": "^11.10.7",
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {

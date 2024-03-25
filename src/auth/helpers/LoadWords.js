@@ -9,7 +9,9 @@ export const loadWords = async (userId = '') => {
 
 	const words = [];
 	docs.forEach((document) => {
-		words.push({ id: document.id, ...document.data() });
+
+		const wordWithId = { ...document.data(), id: document.id };
+		words.push(wordWithId);
 	});
 
 	return words;

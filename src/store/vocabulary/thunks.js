@@ -1,6 +1,6 @@
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firebase/config';
-import { addNewEmptyWord, setActiveWord, setWords, startSavingNewWord } from './VocabularySlice';
+import { addNewEmptyWord, setActiveWord, setSaving, setWords, startSavingNewWord, updateWord } from './VocabularySlice';
 import { loadWords } from '../../auth/helpers';
 
 export const startNewWord = () => {
@@ -17,7 +17,7 @@ export const startNewWord = () => {
 			useCases: [],
 			firstAppearance: '',
 			contextId: '',
-			imgId: [],
+			imgId: '',
 			createDate: now,
 			createUser: userUid,
 			lastUpdateDate: now,
@@ -40,5 +40,22 @@ export const startLoadingWords = () => {
 
 		const wordList = await loadWords(uid);
 		dispatch(setWords(wordList));
+	};
+};
+
+export const startSaveWord = () => {
+	return async (dispatch, getState) => {
+		dispatch(setSaving());
+		// const { uid } = getState().auth;
+		const { active: word } = getState().vocabulary;
+
+		const wordToFireStore = { ...word };
+
+		delete wordToFireStore.id;
+
+		const docRef = doc(FirebaseDB, `words/${word.id}`);
+		await setDoc(docRef, wordToFireStore, { merge: true });
+
+		dispatch(updateWord(word));
 	};
 };

@@ -16,7 +16,7 @@ export const VocabularyPage = () => {
 
 	return (
 		<VocabularyLayout>
-			{!!activeWord ? <CardView /> : <NothingSelectedView />}
+			{activeWord !== null ? <CardView /> : <NothingSelectedView />}
 
 			{/* <CardView /> */}
 			{/* <NothingSelectedView /> */}

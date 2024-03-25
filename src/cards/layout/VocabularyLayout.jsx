@@ -1,7 +1,7 @@
 import { Box, Toolbar } from '@mui/material';
 import { SideBar, VNavBar } from '../../ui/components';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 export const VocabularyLayout = ({ children }) => {
 	return (

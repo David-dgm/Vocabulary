@@ -18,12 +18,27 @@ export const vocabularySlice = createSlice({
 		},
 		setActiveWord: (state, action) => {
 			state.active = action.payload;
+			state.messageSave = '';
 		},
 		setWords: (state, action) => {
 			state.words = action.payload;
 		},
-		setSaving: (state) => {},
-		updateWord: (state, action) => {},
+		setSaving: (state) => {
+			state.isSaving = true;
+			state.messageSave = '';
+		},
+		updateWord: (state, action) => {
+			state.isSaving = false;
+			state.words = state.words.map((word) => {
+				if (word.id === action.payload.id) {
+					return action.payload;
+				}
+				return word;
+			});
+
+			state.messageSave = `${action.payload.value}, actualizada correctamente`;
+			console.log(state.messageSave);
+		},
 		deleteWordById: (state, action) => {},
 	},
 });

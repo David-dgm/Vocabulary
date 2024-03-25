@@ -6,7 +6,8 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 	const { displayName } = useSelector((state) => state.auth);
 	const { words } = useSelector((state) => state.vocabulary);
 
-	return (
+
+  return (
 		<Box component='nav' sx={{ width: { sm: drawerWidth, flexShrink: { sm: 0 } } }}>
 			<Drawer
 				variant='permanent'
@@ -24,10 +25,10 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 				<Divider />
 				<List>
 					{words.map((word) => (
-						<SideBarItem key={word.value} {...word} />
+						<SideBarItem key={word.id} {...word} />
 					))}
 				</List>
 			</Drawer>
 		</Box>
-	);
+  );
 };

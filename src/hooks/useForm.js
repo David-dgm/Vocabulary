@@ -8,6 +8,10 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 		createValidations();
 	}, [formState]);
 
+	useEffect(() => {
+		setFormState(initialForm);
+	}, [initialForm]);
+
 	const isFormValid = useMemo(() => {
 		const totalErrors = Object.keys(formValidation).filter((dynamicProperty) => !!formValidation[dynamicProperty]);
 
