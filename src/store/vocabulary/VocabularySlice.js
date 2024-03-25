@@ -39,10 +39,24 @@ export const vocabularySlice = createSlice({
 			state.messageSave = `${action.payload.value}, actualizada correctamente`;
 			console.log(state.messageSave);
 		},
+		setPhotosToActiveNote: (state, action) => {
+			state.active.imgId = action.payload;
+			// Para varias img a la vez
+			//state.active.imgId = [...state.active.imgId, ...action.payload];
+			state.isSaving = false;
+		},
 		deleteWordById: (state, action) => {},
 	},
 });
 
 // Action creators are generated for each case reducer function
-export const { startSavingNewWord, addNewEmptyWord, setActiveWord, setWords, setSaving, updateWord, deleteWordById } =
-	vocabularySlice.actions;
+export const {
+	startSavingNewWord,
+	addNewEmptyWord,
+	setActiveWord,
+	setWords,
+	setSaving,
+	updateWord,
+	setPhotosToActiveNote,
+	deleteWordById,
+} = vocabularySlice.actions;
