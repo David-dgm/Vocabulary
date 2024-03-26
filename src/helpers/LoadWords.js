@@ -1,5 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore/lite';
-import { FirebaseDB } from '../../firebase/config';
+import { FirebaseDB } from '../firebase/config';
+
 
 export const loadWords = async (userId = '') => {
 	if (!userId) throw new Error('El UID del usuario no existe.');

@@ -6,12 +6,12 @@ export const startUploadingFiles = (files = []) => {
 		dispatch(setSaving());
 
 		// si quiero guardar más info de la imgen en base de datos coger de aqui
-		const secure_url = await fileUpload(files[0]);
+		const { original_filename: imageName, public_id: imgId, secure_url: imageUrl } = await fileUpload(files[0]);
 
 		// codigo para varios archivos
 		//const photosUrls = await awaitAllPromise(files);
 
-		dispatch(setPhotosToActiveNote(secure_url));
+		dispatch(setPhotosToActiveNote({ imageName, imgId, imageUrl }));
 	};
 };
 

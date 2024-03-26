@@ -37,13 +37,21 @@ export const vocabularySlice = createSlice({
 			});
 
 			state.messageSave = `${action.payload.value}, actualizada correctamente`;
-			console.log(state.messageSave);
+			// console.log(state.messageSave);
 		},
 		setPhotosToActiveNote: (state, action) => {
-			state.active.imgId = action.payload;
+			console.log(action.payload);
+			state.active.wordImage = { ...action.payload };
 			// Para varias img a la vez
 			//state.active.imgId = [...state.active.imgId, ...action.payload];
 			state.isSaving = false;
+		},
+
+		clearNotesLogout: (state) => {
+			state.isSaving = false;
+			state.messageSaved = '';
+			state.words = [];
+			state.active = null;
 		},
 		deleteWordById: (state, action) => {},
 	},
@@ -51,12 +59,13 @@ export const vocabularySlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-	startSavingNewWord,
 	addNewEmptyWord,
-	setActiveWord,
-	setWords,
-	setSaving,
-	updateWord,
-	setPhotosToActiveNote,
+	clearNotesLogout,
 	deleteWordById,
+	setActiveWord,
+	setPhotosToActiveNote,
+	setSaving,
+	setWords,
+	startSavingNewWord,
+	updateWord,
 } = vocabularySlice.actions;

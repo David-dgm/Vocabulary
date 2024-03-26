@@ -1,7 +1,7 @@
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firebase/config';
 import { addNewEmptyWord, setActiveWord, setSaving, setWords, startSavingNewWord, updateWord } from './VocabularySlice';
-import { loadWords } from '../../auth/helpers';
+import { loadWords } from '../../helpers';
 
 export const startNewWord = () => {
 	return async (dispatch, getState) => {
@@ -17,7 +17,7 @@ export const startNewWord = () => {
 			useCases: [],
 			firstAppearance: '',
 			contextId: '',
-			imgId: '',
+			wordImage: {},
 			createDate: now,
 			createUser: userUid,
 			lastUpdateDate: now,
@@ -57,5 +57,17 @@ export const startSaveWord = () => {
 		await setDoc(docRef, wordToFireStore, { merge: true });
 
 		dispatch(updateWord(word));
+	};
+};
+
+export const startDeletingNote = () => {
+	return async (dispatch, getState) => {
+		const { uid } = getState().auth;
+		const { active: note } = getState().journal;
+
+		const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
+		await deleteDoc(docRef);
+
+		dispatch(deleteNoteById(note.id));
 	};
 };

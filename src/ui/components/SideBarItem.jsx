@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 
 import { setActiveWord } from '../../store/vocabulary';
 
-export const SideBarItem = ({ value = '', firstAppearance, id, i18Value, createDate, imgId = '', useCases = [] }) => {
+export const SideBarItem = ({ value = '', firstAppearance, id, i18Value, createDate, wordImage = {}, useCases = [] }) => {
 	const dispatch = useDispatch();
 
 	const setFocusOn = () => {
-		dispatch(setActiveWord({ value, firstAppearance, id, i18Value, createDate, imgId, useCases }));
+		dispatch(setActiveWord({ value, firstAppearance, id, i18Value, createDate, wordImage, useCases }));
 	};
 
 	const newTitle = useMemo(() => {

@@ -4,7 +4,6 @@ import { FurniturePage,  SearchPage, MemoCardPage, AdjectivePage } from '../page
 import { VocabularyPage } from '../pages/VocabularyPage';
 
 export const MemoryCardsRoutes = () => {
-	console.log('atenticado');
 	return (
 		<Routes>
 			<Route path='/' element={<Navigate to='/vocabulary' />} />
