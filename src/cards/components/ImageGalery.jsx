@@ -1,10 +1,10 @@
 import { ImageList, ImageListItem } from '@mui/material';
 
-export const ImageGalery = ({ imageName, imageUrl, imgId }) => {
-	console.log(imageName);
+export const ImageGalery = ({ image }) => {
+	const { imageName, imageUrl, imgId } = image;
 
 	return (
-		<ImageList sx={{ width: '100%', height: 500 }} cols={4} rowHeight={200}>
+		<ImageList sx={{ width: '75%', height: 500, mt: 2 }} cols={1} rowHeight={200}>
 			{/* {itemData.map((item) => ( */}
 			<ImageListItem key={imgId}>
 				<img
