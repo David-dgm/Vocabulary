@@ -1,6 +1,14 @@
-import { collection, doc, setDoc } from 'firebase/firestore/lite';
+import { collection, deleteDoc, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firebase/config';
-import { addNewEmptyWord, setActiveWord, setSaving, setWords, startSavingNewWord, updateWord } from './VocabularySlice';
+import {
+	addNewEmptyWord,
+	deleteWordById,
+	setActiveWord,
+	setSaving,
+	setWords,
+	startSavingNewWord,
+	updateWord,
+} from './VocabularySlice';
 import { loadWords } from '../../helpers';
 
 export const startNewWord = () => {
@@ -60,14 +68,14 @@ export const startSaveWord = () => {
 	};
 };
 
-export const startDeletingNote = () => {
+export const startDeletingWord = () => {
 	return async (dispatch, getState) => {
-		const { uid } = getState().auth;
-		const { active: note } = getState().journal;
+		// const { uid } = getState().auth;
+		const { active: word } = getState().vocabulary;
 
-		const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
+		const docRef = doc(FirebaseDB, `words/${word.id}`);
 		await deleteDoc(docRef);
 
-		dispatch(deleteNoteById(note.id));
+		dispatch(deleteWordById(word.id));
 	};
 };

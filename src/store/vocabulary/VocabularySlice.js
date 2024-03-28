@@ -53,7 +53,10 @@ export const vocabularySlice = createSlice({
 			state.words = [];
 			state.active = null;
 		},
-		deleteWordById: (state, action) => {},
+		deleteWordById: (state, action) => {
+			state.active = null;
+			state.words = state.words.filter((word) => word.id !== action.payload);
+		},
 	},
 });
 
