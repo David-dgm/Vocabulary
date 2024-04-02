@@ -1,6 +1,6 @@
 const fileProperty = 'file';
 const projectProperty = 'upload_preset';
-const cloudUrl = process.env.CLOUDINARY_URL;
+const cloudUrl = process.env.CLOUDINARY_PUBLIC_UPLOAD;
 const cloudProject = process.env.CLOUDINARY_PROJECT;
 
 export const fileUpload = async (file) => {
